@@ -1,8 +1,19 @@
-import express from 'express';
+import express from "express";
+
+import {
+    addImage,
+    deleteImage,
+    getGallery,
+    getGalleryById,
+    updateImage,
+} from "../controllers/galleryController.js";
+
 const router = express.Router();
 
-router.get("/"); // here pic goto / have then crud for
-router.post("/");
-router.put("/:id");
-router.delete("/:id");
- export default router;
+router.get("/", getGallery);
+router.get("/:id", getGalleryById);
+router.post("/", addImage);
+router.put("/:id", updateImage);
+router.delete("/:id", deleteImage);
+
+export default router;

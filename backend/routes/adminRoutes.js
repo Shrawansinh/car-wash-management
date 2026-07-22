@@ -1,7 +1,13 @@
-import express from 'express';
+import express from "express";
+
+import {
+    getProfile,
+    loginAdmin,
+} from "../controllers/adminController.js";
+
 const router = express.Router();
 
-router.post("/login");
-router.get("/profile");
+router.post("/login", loginAdmin);
+router.get("/profile", getProfile);
 
 export default router;
