@@ -6,6 +6,8 @@ import adminRoutes from './routes/adminRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
 import customerRoutes from './routes/customerRoutes.js';
 import galleryRoutes from './routes/galleryRoutes.js';
+import serviceRoutes from './routes/serviceRoutes.js';
+import timeSlotRoutes from './routes/timeSlotRoutes.js';
 
 const app = express();
 dotenv.config();
@@ -21,9 +23,10 @@ app.get("/",(req,res)=>{
 
 app.use("/api/customers",customerRoutes);
 app.use("/api/bookings",bookingRoutes);
-app.use("/api/timeslots",timeSlotROutes);
+app.use("/api/timeslots",timeSlotRoutes);
 app.use("/api/admin",adminRoutes);
-app.use("/api/gallary",galleryRoutes);
+app.use("/api/services",serviceRoutes);
+app.use("/api/gallery",galleryRoutes);
 const port = process.env.PORT || 5000;
 app.listen(port,()=>{
     console.log(`server is running on port ${port}`);

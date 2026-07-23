@@ -1,7 +1,39 @@
+import bcrypt from "bcryptjs";
 import Admin from "../models/Admin.js";
 
 // @desc    Admin Login
 // @route   POST /api/admin/login
+export const createAdmin = async (req,res)=>{
+  try{
+    const {name , email , password} = req.body;
+    const existingAdmin = await Admin.findOne({ email});
+    if(existingAdmin){
+      return res.status(500).json({
+        success:false,
+        message:"Admin alerady exists",
+      });
+    }
+    // hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    
+    const admin = await Admin.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
+    res.status(201).json({
+      success:true,
+      message:"Admin created successfully",
+      data:admin
+    })
+  }catch(error){
+    res.status(500).json({
+      success:false,
+      message:error.message,
+    });
+  }
+};
 export const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;

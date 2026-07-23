@@ -2,6 +2,7 @@ import epxress from 'express';
 const router = epxress.Router();
 
 import {
+    createService,
     deleteService,
     getAllServices,
     getServiceById,
