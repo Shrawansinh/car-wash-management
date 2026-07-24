@@ -5,11 +5,11 @@ import {
     getProfile,
     loginAdmin,
 } from "../controllers/adminController.js";
-import { verifyToken } from "../middleware/authMiddleware.js";
+import { authorizeRoles, verifyToken } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/",createAdmin);
+router.post("/",verifyToken,authorizeRoles("admin"),createAdmin);
 router.post("/login", loginAdmin);
 
 // proteted route

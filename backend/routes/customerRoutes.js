@@ -10,10 +10,10 @@ import {
     updateCustomer
 } from "../controllers/customerController.js";
 
-
-router.get("/",getAllCustomers);;
-router.get("/:id",getCustomerById);
-router.post("/",createCustomer);
-router.put("/:id",updateCustomer);;
-router.delete("/:id",deleteCustomer);
+import { verifyToken } from '../middleware/authMiddleware.js';
+router.get("/",verifyToken,authorizeRoles("admin"),getAllCustomers);;
+router.get("/:id",verifyToken,authorizeRoles("admin"),getCustomerById);
+//router.post("/",createCustomer);
+router.put("/:id",verifyToken,authorizeRoles("admin"),updateCustomer);;
+router.delete("/:id",verifyToken,authorizeRoles("admin"),deleteCustomer);
 export default router;

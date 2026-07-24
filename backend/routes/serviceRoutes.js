@@ -1,6 +1,4 @@
 import epxress from 'express';
-const router = epxress.Router();
-
 import {
     createService,
     deleteService,
@@ -8,11 +6,13 @@ import {
     getServiceById,
     updateService
 } from "../controllers/serviceController.js";
+import { authorizeRoles, verifyToken } from '../middleware/authMiddleware.js';
+const router = epxress.Router();
 
 router.get("/",getAllServices);
 router.get("/:id",getServiceById);
-router.post("/",createService);
-router.put("/:id",updateService);
-router.delete("/:id",deleteService);
+router.post("/",verifyToken,authorizeRoles("admin"),createService);
+router.put("/:id",verifyToken,authorizeRoles("admin"),updateService);
+router.delete("/:id",verifyToken,authorizeRoles("admin"),deleteService);
 
 export default router;
