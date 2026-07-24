@@ -1,4 +1,5 @@
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import Admin from "../models/Admin.js";
 
 // @desc    Admin Login
@@ -46,19 +47,28 @@ export const loginAdmin = async (req, res) => {
         message: "Admin not found",
       });
     }
-
-    // JWT & bcrypt validation Day 3 me add karenge
-    if (admin.password !== password) {
+    const isMatch = await bcrypt.compare(password, admin.password);
+    if(!isMatch){
       return res.status(401).json({
         success: false,
-        message: "Invalid email or password",
-      });
+        message: "Invalid email or password"
+      })
     }
-
+    // after succesful Login we will generate jwt tokens and send it to the client
+    const token = jwt.sign({
+      id:admin._id,
+      email:admin.email,
+    }, process.env.JWT_SECRET,{
+      expiresIn: process.env.JWT_EXPIRE,
+    });
+    // JWT & bcrypt validation Day 3 me add karenge
+const adminResponse = admin.toObject();
+delete adminResponse.password;
     res.status(200).json({
       success: true,
       message: "Login successful",
-      data: admin,
+      token,
+      data: adminResponse,
     });
   } catch (error) {
     res.status(500).json({
@@ -72,7 +82,14 @@ export const loginAdmin = async (req, res) => {
 // @route   GET /api/admin/profile
 export const getProfile = async (req, res) => {
   try {
-    const admin = await Admin.find();
+    const admin = await Admin.findById(req.admin.id).select("-password");
+
+    if(!admin){
+      return res.status(404).json({
+        success: false,
+        message: "Admin not found",
+      });
+    }
 
     res.status(200).json({
       success: true,
