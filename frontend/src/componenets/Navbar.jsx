@@ -11,7 +11,7 @@ const Navbar = () => {
       <nav className="max-w-7xl mx-auto h-20 px-6 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+          <div className="w-11 h-11 rounded-full bg-linear-to-r from-sky-500 to-cyan-500 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
             <FaCarSide className="text-white text-xl" />
           </div>
 
@@ -30,7 +30,7 @@ const Navbar = () => {
           <li>
             <a
               href="#home"
-              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
             >
               Home
             </a>
@@ -39,7 +39,7 @@ const Navbar = () => {
           <li>
             <a
               href="#services"
-              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
             >
               Services
             </a>
@@ -48,7 +48,7 @@ const Navbar = () => {
           <li>
             <a
               href="#gallery"
-              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
             >
               Gallery
             </a>
@@ -57,7 +57,7 @@ const Navbar = () => {
           <li>
             <a
               href="#testimonials"
-              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
             >
               Testimonials
             </a>
@@ -66,7 +66,7 @@ const Navbar = () => {
           <li>
             <a
               href="#contact"
-              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
+              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
             >
               Contact
             </a>
@@ -84,7 +84,7 @@ const Navbar = () => {
 
           <Link
             to="/book-service"
-            className="hidden lg:block bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-cyan-500 hover:to-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-sky-500/40"
+            className="hidden lg:block bg-linear-to-r from-sky-500 to-cyan-500 hover:from-cyan-500 hover:to-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-sky-500/40"
           >
             Book Now
           </Link>
@@ -102,7 +102,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-500 ${
-          open ? "max-h-[500px]" : "max-h-0"
+          open ? "max-h-125" : "max-h-0"
         }`}
       >
         <div className="bg-slate-950 border-t border-slate-800 shadow-xl">
@@ -169,7 +169,7 @@ const Navbar = () => {
             <Link
               to="/book-service"
               onClick={() => setOpen(false)}
-              className="bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-sky-500/40"
+              className="bg-linear-to-r from-sky-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-sky-500/40"
             >
               Book Now
             </Link>
