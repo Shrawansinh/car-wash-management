@@ -1,5 +1,5 @@
+import Hero from "../componenets/Hero";
 import Navbar from "../componenets/Navbar";
-// import Hero from "../../components/Hero";
 // import Services from "../../components/Services";
 // import WhyChooseUs from "../../components/WhyChooseUs";
 // import Gallery from "../../components/Gallery";
@@ -11,8 +11,8 @@ const Home = () => {
   return (
     <div className="bg-slate text-white min-h-screen">
       <Navbar />
-      {/* <Hero />
-      <Services />
+      <Hero />
+      {/* <Services />
       <WhyChooseUs />
       <Gallery />
       <Testimonials />
