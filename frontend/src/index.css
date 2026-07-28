@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
-body{
-  font-family: "Poppins",sans-serif;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background: #05070b;
+  color: #f8f7f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(241, 226, 200, 0.35);
+  color: white;
 }

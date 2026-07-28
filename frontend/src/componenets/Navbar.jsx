@@ -5,175 +5,106 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const links = [
+    { label: "Home", href: "#home" },
+    { label: "Services", href: "#services" },
+    { label: "Gallery", href: "#gallery" },
+    { label: "Reviews", href: "#testimonials" },
+    { label: "Contact", href: "#contact" },
+  ];
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 shadow-lg">
-      <nav className="max-w-7xl mx-auto h-20 px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-full bg-linear-to-r from-sky-500 to-cyan-500 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
-            <FaCarSide className="text-white text-xl" />
-          </div>
+    <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <nav className="flex items-center justify-between rounded-full border border-white/10 bg-[rgba(5,7,11,0.72)] px-3 py-3 shadow-[0_20px_70px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:px-5">
+          <Link to="/" className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#c9a46b]/30 bg-[#f1e2c8]/10 transition duration-300 hover:scale-105">
+              <FaCarSide className="text-lg text-[#f1e2c8]" />
+            </div>
 
-          <div>
-            <h1 className="text-xl font-bold text-white leading-none">
-              Maa Nagneshwari CarWash
-            </h1>
-            <p className="text-xs text-slate-400">
-              Premium Car Care
-            </p>
-          </div>
-        </Link>
-
-        {/* Desktop Menu */}
-        <ul className="hidden lg:flex items-center gap-8 text-slate-300 font-medium">
-          <li>
-            <a
-              href="#home"
-              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Home
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="#services"
-              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Services
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="#gallery"
-              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Gallery
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="#testimonials"
-              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Testimonials
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="#contact"
-              className="relative hover:text-sky-400 transition duration-300 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-sky-400 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-
-        {/* Right Side */}
-        <div className="flex items-center gap-4">
-          <Link
-            to="/login"
-            className="hidden lg:block text-slate-300 hover:text-sky-400 transition duration-300"
-          >
-            Login
+            <div className="leading-none">
+              <p className="text-[11px] uppercase tracking-[0.32em] text-slate-400">
+                Luxury car care
+              </p>
+              <h1 className="mt-1 text-sm font-semibold tracking-[0.16em] text-white sm:text-base">
+                Maa Nagneshwari
+              </h1>
+            </div>
           </Link>
 
-          <Link
-            to="/book-service"
-            className="hidden lg:block bg-linear-to-r from-sky-500 to-cyan-500 hover:from-cyan-500 hover:to-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-sky-500/40"
-          >
-            Book Now
-          </Link>
+          <ul className="hidden items-center gap-7 text-sm font-medium text-slate-300 lg:flex">
+            {links.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="relative transition duration-300 hover:text-white after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-0 after:bg-[#f1e2c8] after:transition-all after:duration-300 hover:after:w-full"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="lg:hidden text-white text-3xl transition-transform duration-300 hover:scale-110"
-          >
-            {open ? <HiX /> : <HiOutlineMenuAlt3 />}
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      <div
-        className={`lg:hidden overflow-hidden transition-all duration-500 ${
-          open ? "max-h-125" : "max-h-0"
-        }`}
-      >
-        <div className="bg-slate-950 border-t border-slate-800 shadow-xl">
-          <ul className="flex flex-col items-center gap-6 py-8 text-slate-300 font-medium">
-
-            <li>
-              <a
-                href="#home"
-                onClick={() => setOpen(false)}
-                className="hover:text-sky-400 transition"
-              >
-                Home
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#services"
-                onClick={() => setOpen(false)}
-                className="hover:text-sky-400 transition"
-              >
-                Services
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#gallery"
-                onClick={() => setOpen(false)}
-                className="hover:text-sky-400 transition"
-              >
-                Gallery
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#testimonials"
-                onClick={() => setOpen(false)}
-                className="hover:text-sky-400 transition"
-              >
-                Testimonials
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="hover:text-sky-400 transition"
-              >
-                Contact
-              </a>
-            </li>
-
+          <div className="hidden items-center gap-3 lg:flex">
             <Link
               to="/login"
-              onClick={() => setOpen(false)}
-              className="text-white hover:text-sky-400 transition"
+              className="rounded-full px-4 py-2 text-sm text-slate-300 transition duration-300 hover:text-white"
             >
               Login
             </Link>
+            <Link
+              to="/book-service"
+              className="rounded-full bg-[#f1e2c8] px-5 py-2.5 text-sm font-semibold text-[#0f1115] shadow-[0_10px_30px_rgba(241,226,200,0.18)] transition duration-300 hover:bg-[#e7d5b3]"
+            >
+              Book now
+            </Link>
+          </div>
 
+          <button
+            onClick={() => setOpen(!open)}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-2xl text-white transition duration-300 hover:bg-white/10 lg:hidden"
+          >
+            {open ? <HiX /> : <HiOutlineMenuAlt3 />}
+          </button>
+        </nav>
+      </div>
+
+      <div
+        className={`overflow-hidden transition-all duration-300 lg:hidden ${
+          open ? "mt-3 max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="mx-auto max-w-7xl rounded-[24px] border border-white/10 bg-[rgba(5,7,11,0.95)] p-4 shadow-2xl backdrop-blur-xl">
+          <ul className="flex flex-col gap-4 text-sm font-medium text-slate-300">
+            {links.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-xl px-3 py-2 transition duration-300 hover:bg-white/5 hover:text-white"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4">
+            <Link
+              to="/login"
+              onClick={() => setOpen(false)}
+              className="text-sm text-slate-300 transition duration-300 hover:text-white"
+            >
+              Login
+            </Link>
             <Link
               to="/book-service"
               onClick={() => setOpen(false)}
-              className="bg-linear-to-r from-sky-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-sky-500/40"
+              className="rounded-full bg-[#f1e2c8] px-4 py-2 text-sm font-semibold text-[#0f1115]"
             >
-              Book Now
+              Reserve
             </Link>
-          </ul>
+          </div>
         </div>
       </div>
     </header>
