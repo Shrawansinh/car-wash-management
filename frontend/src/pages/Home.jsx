@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import { FaArrowRight, FaCarSide, FaClock, FaMagic, FaShieldAlt, FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Footer from "../componenets/Footer";
 import Hero from "../componenets/Hero";
 import Navbar from "../componenets/Navbar";
 
@@ -63,13 +64,13 @@ const Home = () => {
       <Hero />
 
       <main className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
-        <section className="relative z-10 -mt-10 grid gap-4 rounded-[32px] border border-white/10 bg-[rgba(10,14,22,0.9)] p-4 shadow-[0_25px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl md:grid-cols-3">
-          <div className="rounded-[24px] border border-white/10 bg-white/5 p-6">
+        <section className="relative z-10 -mt-10 grid gap-4 rounded-4xl border border-white/10 bg-[rgba(10,14,22,0.9)] p-4 shadow-[0_25px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl md:grid-cols-3">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
             <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Trusted care</p>
             <p className="mt-3 text-3xl font-semibold text-white">5,000+</p>
             <p className="mt-2 text-sm text-slate-400">vehicles refined with precision and care</p>
           </div>
-          <div className="rounded-[24px] border border-white/10 bg-white/5 p-6">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
             <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Client rating</p>
             <p className="mt-3 text-3xl font-semibold text-white">4.9/5</p>
             <p className="mt-2 text-sm text-slate-400">consistently praised for detail and reliability</p>
@@ -233,6 +234,7 @@ const Home = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 };

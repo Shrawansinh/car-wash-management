@@ -37,7 +37,7 @@ const Navbar = () => {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="relative transition duration-300 hover:text-white after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-0 after:bg-[#f1e2c8] after:transition-all after:duration-300 hover:after:w-full"
+                  className="relative transition duration-300 hover:text-white after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-[#f1e2c8] after:transition-all after:duration-300 hover:after:w-full"
                 >
                   {link.label}
                 </a>
@@ -74,7 +74,7 @@ const Navbar = () => {
           open ? "mt-3 max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="mx-auto max-w-7xl rounded-[24px] border border-white/10 bg-[rgba(5,7,11,0.95)] p-4 shadow-2xl backdrop-blur-xl">
+        <div className="mx-auto max-w-7xl rounded-3xl border border-white/10 bg-[rgba(5,7,11,0.95)] p-4 shadow-2xl backdrop-blur-xl">
           <ul className="flex flex-col gap-4 text-sm font-medium text-slate-300">
             {links.map((link) => (
               <li key={link.label}>
