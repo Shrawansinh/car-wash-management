@@ -13,6 +13,17 @@ const bookingSchema = new mongoose.Schema(
       ref: "Service",
       required: true,
     },
+    vehicalType:{
+      type:String,
+      enum: [
+        "Bike",
+        "Car",
+        "Truck / Heavy Vehicle",
+        "8-Tyre Truck",
+        "JCB / Other Large Vehicle",
+      ],
+      required:true,
+    },
 
     timeSlot: {
       type: mongoose.Schema.Types.ObjectId,

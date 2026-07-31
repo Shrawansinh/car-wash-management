@@ -29,6 +29,10 @@ const serviceSchema = new mongoose.Schema(
       required: true,
       min: 0,
     },
+    contactForQuote:{
+      type: Boolean,
+      default:false,
+    },
 
     duration: {
       type: Number,
