@@ -18,20 +18,35 @@ const serviceSchema = new mongoose.Schema(
       maxlength: 500,
     },
 
-    vehicleType: {
-      type: String,
-      enum: ["Bike", "Car","Truck","8 wheeler truck","10 wheeler truck","JCB","Excavator","Bulldozer","Crane"],
-      required: true,
-    },
+    prices: {
+      bike: {
+        type: Number,
+        required: true,
+        min: 0,
+      },
 
-    price: {
-      type: Number,
-      required: true,
-      min: 0,
-    },
-    contactForQuote:{
-      type: Boolean,
-      default:false,
+      car: {
+        type: Number,
+        required: true,
+        min: 0,
+      },
+
+      truck: {
+        type: Number,
+        required: true,
+        min: 0,
+      },
+
+      eightTyreTruck: {
+        type: Number,
+        required: true,
+        min: 0,
+      },
+
+      heavyVehicle: {
+        type: Number,
+        default: null,
+      },
     },
 
     duration: {
@@ -39,6 +54,12 @@ const serviceSchema = new mongoose.Schema(
       required: true,
       min: 5,
     },
+
+    features: [
+      {
+        type: String,
+      },
+    ],
 
     image: {
       type: String,
@@ -55,6 +76,4 @@ const serviceSchema = new mongoose.Schema(
   }
 );
 
-const Service = mongoose.model("Service", serviceSchema);
-
-export default Service;
+export default mongoose.model("Service", serviceSchema);
