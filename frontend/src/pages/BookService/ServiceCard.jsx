@@ -1,127 +1,160 @@
-import { useState } from "react";
-import {
-    FaCar,
-    FaMagic,
-    FaShieldAlt,
-    FaSoap
-} from "react-icons/fa";
+import { FaSoap } from "react-icons/fa";
 
-const services = [
-  {
-    id: 1,
-    icon: <FaSoap size={40} />,
-    title: "Foam Wash",
-    price: "₹399",
-    features: [
-      "Premium Foam",
-      "Exterior Cleaning",
-      "Tyre Cleaning",
-    ],
-  },
-  {
-    id: 2,
-    icon: <FaCar size={40} />,
-    title: "Interior Cleaning",
-    price: "₹699",
-    features: [
-      "Vacuum Cleaning",
-      "Dashboard Polish",
-      "Seat Cleaning",
-    ],
-  },
-  {
-    id: 3,
-    icon: <FaMagic size={40} />,
-    title: "Car Detailing",
-    price: "₹1499",
-    features: [
-      "Deep Cleaning",
-      "Paint Polish",
-      "Wax Protection",
-    ],
-  },
-  {
-    id: 4,
-    icon: <FaShieldAlt size={40} />,
-    title: "Ceramic Coating",
-    price: "₹4999",
-    features: [
-      "9H Protection",
-      "High Gloss Finish",
-      "Water Repellent",
-    ],
-  },
-];
+const ServiceCard = ({
+  vehicleType,
+  setVehicleType,
+  selectedService,
+  setSelectedService,
+  setTotalAmount,
+}) => {
 
-const ServiceCard = () => {
-  const [selected, setSelected] = useState(null);
+  const prices = {
+    Bike: 50,
+    Car: 400,
+    Truck: 800,
+    "8-Tyre Truck": 1400,
+    "Heavy Vehicle": null,
+  };
+
+  const handleSelect = () => {
+    const price = prices[vehicleType];
+
+    setSelectedService({
+      name: "Simple Wash",
+      price: price,
+    });
+
+    setTotalAmount(price ?? 0);
+
+    // Smooth Scroll
+    document
+      .getElementById("booking-form")
+      ?.scrollIntoView({
+        behavior: "smooth",
+      });
+  };
 
   return (
     <section className="py-20 px-6 bg-slate-950">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
-        <div className="text-center mb-14">
+        <div className="text-center mb-12">
+
           <h2 className="text-4xl font-bold text-white">
-            Choose Your
-            <span className="text-sky-400"> Service</span>
+            Book Your
+            <span className="text-sky-400">
+              {" "}
+              Service
+            </span>
           </h2>
 
-          <p className="text-slate-400 mt-4">
-            Select the service that best suits your vehicle.
+          <p className="text-slate-400 mt-3">
+            Select your vehicle type first.
           </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
-
-          {services.map((service) => (
-            <div
-              key={service.id}
-              onClick={() => setSelected(service.id)}
-              className={`cursor-pointer rounded-2xl p-8 transition-all duration-300 border
-
-              ${
-                selected === service.id
-                  ? "border-sky-500 bg-sky-500/10 scale-105 shadow-[0_0_25px_rgba(14,165,233,0.35)]"
-                  : "border-slate-800 bg-slate-900 hover:border-sky-500 hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(14,165,233,0.25)]"
-              }`}
-            >
-
-              <div className="text-sky-400 mb-6">
-                {service.icon}
-              </div>
-
-              <h3 className="text-2xl font-bold text-white">
-                {service.title}
-              </h3>
-
-              <p className="text-3xl font-bold text-sky-400 mt-4">
-                {service.price}
-              </p>
-
-              <ul className="mt-6 space-y-3 text-slate-300">
-                {service.features.map((item) => (
-                  <li key={item}>✔ {item}</li>
-                ))}
-              </ul>
-
-              <button
-                className={`mt-8 w-full py-3 rounded-xl font-semibold transition
-
-                ${
-                  selected === service.id
-                    ? "bg-sky-500 text-white"
-                    : "bg-slate-800 text-white hover:bg-sky-500"
-                }`}
-              >
-                {selected === service.id
-                  ? "Selected"
-                  : "Select Service"}
-              </button>
-
-            </div>
-          ))}
 
         </div>
+
+        {/* Vehicle Type */}
+
+        <div className="max-w-md mx-auto mb-12">
+
+          <select
+            value={vehicleType}
+            onChange={(e) =>
+              setVehicleType(e.target.value)
+            }
+            className="w-full bg-slate-900 border border-slate-700 rounded-xl p-4 text-white focus:border-sky-500 outline-none"
+          >
+            <option value="">
+              Select Vehicle Type
+            </option>
+
+            <option>Bike</option>
+
+            <option>Car</option>
+
+            <option>Truck</option>
+
+            <option>8-Tyre Truck</option>
+
+            <option>Heavy Vehicle</option>
+
+          </select>
+
+        </div>
+
+        {/* Service Card */}
+
+        <div
+          onClick={handleSelect}
+          className={`max-w-lg mx-auto rounded-3xl border cursor-pointer transition-all duration-300 p-10
+
+          ${
+            selectedService.name === "Simple Wash"
+              ? "border-sky-500 bg-sky-500/10 shadow-[0_0_30px_rgba(14,165,233,.35)]"
+              : "border-slate-800 bg-slate-900 hover:border-sky-500 hover:-translate-y-2"
+          }`}
+        >
+
+          <FaSoap
+            className="text-sky-400 mb-6"
+            size={55}
+          />
+
+          <h2 className="text-3xl font-bold text-white">
+            Simple Wash
+          </h2>
+
+          <p className="text-slate-400 mt-3">
+            Complete basic wash package.
+          </p>
+
+          <ul className="mt-8 space-y-3 text-slate-300">
+
+            <li>✔ Foam Wash</li>
+
+            <li>✔ High Pressure Wash</li>
+
+            <li>✔ Tyre Cleaning</li>
+
+            <li>✔ Glass Cleaning</li>
+
+            <li>✔ Dashboard Cleaning</li>
+
+            <li>✔ Interior Vacuum</li>
+
+          </ul>
+
+          <div className="mt-8">
+
+            <p className="text-slate-400">
+              Price
+            </p>
+
+            <h3 className="text-4xl font-bold text-sky-400 mt-2">
+
+              {vehicleType === ""
+                ? "--"
+
+                : prices[vehicleType] === null
+
+                ? "Contact for Quote"
+
+                : `₹${prices[vehicleType]}`}
+
+            </h3>
+
+          </div>
+
+          <button
+            disabled={!vehicleType}
+            className="mt-10 w-full rounded-xl bg-sky-500 hover:bg-sky-600 disabled:bg-slate-700 py-4 font-semibold transition"
+          >
+            Select Service
+          </button>
+
+        </div>
+
       </div>
     </section>
   );

@@ -1,9 +1,20 @@
+import { useState } from "react";
 import Footer from '../../componenets/Footer';
+import BookingForm from './BookingForm';
 import BookServiceNavbar from './BookingNavbar';
-// import BookingForm from "./BookingForm";
-//import TimeSlot from "./TimeSlot";
+import ServiceCard from './ServiceCard';
+import Timeslot from './TimeSlot';
 
 const BookService = () => {
+  const [vehicleType, setVehicleType] = useState("");
+  const [selectedService, setSelectedService] = useState({
+    name: "",
+    price: 0,
+  });
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+  const [bookingDate, setBookingDate] = useState(null);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [loading, setLoading] = useState(false);
   return (
     <div className="bg-slate-950 text-white min-h-screen">
 
@@ -32,7 +43,29 @@ const BookService = () => {
 
       </section>
 
-
+    <ServiceCard
+      vehicleType={vehicleType}
+      setVehicleType={setVehicleType}
+    selectedService={selectedService}
+  setSelectedService={setSelectedService}
+  setTotalAmount={setTotalAmount}
+    />
+    <Timeslot
+selectedTimeSlot={selectedTimeSlot}
+setSelectedTimeSlot={setSelectedTimeSlot}
+/>
+    
+    <BookingForm 
+vehicleType={vehicleType}
+selectedService={selectedService}
+totalAmount={totalAmount}
+bookingDate={bookingDate}
+setBookingDate={setBookingDate}
+selectedTimeSlot={selectedTimeSlot}
+setSelectedTimeSlot={setSelectedTimeSlot}
+loading={loading}
+setLoading={setLoading}
+/>
 
       <Footer />
 
