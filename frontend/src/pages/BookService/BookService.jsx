@@ -50,10 +50,7 @@ const BookService = () => {
   setSelectedService={setSelectedService}
   setTotalAmount={setTotalAmount}
     />
-    <Timeslot
-selectedTimeSlot={selectedTimeSlot}
-setSelectedTimeSlot={setSelectedTimeSlot}
-/>
+
     
     <BookingForm 
 vehicleType={vehicleType}
@@ -65,6 +62,10 @@ selectedTimeSlot={selectedTimeSlot}
 setSelectedTimeSlot={setSelectedTimeSlot}
 loading={loading}
 setLoading={setLoading}
+/>
+    <Timeslot
+selectedTimeSlot={selectedTimeSlot}
+setSelectedTimeSlot={setSelectedTimeSlot}
 />
 
       <Footer />

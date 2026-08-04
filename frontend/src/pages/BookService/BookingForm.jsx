@@ -145,7 +145,7 @@ const BookingForm = ({
           <button
             className="md:col-span-2 bg-sky-500 hover:bg-sky-600 rounded-xl py-4 text-lg font-semibold transition"
           >
-            Continue
+            Book Service
           </button>
 
         </form>
