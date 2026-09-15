@@ -53,7 +53,7 @@ const Navbar = () => {
               Login
             </Link>
             <Link
-              to="/book-service"
+              to="/bookService"
               className="rounded-full bg-[#f1e2c8] px-5 py-2.5 text-sm font-semibold text-[#0f1115] shadow-[0_10px_30px_rgba(241,226,200,0.18)] transition duration-300 hover:bg-[#e7d5b3]"
             >
               Book now

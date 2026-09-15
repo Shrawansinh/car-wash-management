@@ -1,0 +1,63 @@
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useState,
+} from "react";
+
+import Toast from "./Toast";
+
+const ToastContext = createContext(null);
+
+export const ToastProvider = ({ children }) => {
+  const [toast, setToast] = useState({
+    show: false,
+    message: "",
+    type: "success",
+  });
+
+  const showToast = useCallback(
+    (message, type = "success") => {
+      setToast({
+        show: true,
+        message,
+        type,
+      });
+    },
+    []
+  );
+
+  const hideToast = useCallback(() => {
+    setToast({
+      show: false,
+      message: "",
+      type: "success",
+    });
+  }, []);
+
+  return (
+    <ToastContext.Provider value={{ showToast }}>
+      {children}
+
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={hideToast}
+        />
+      )}
+    </ToastContext.Provider>
+  );
+};
+
+export const useToast = () => {
+  const context = useContext(ToastContext);
+
+  if (!context) {
+    throw new Error(
+      "useToast must be used inside ToastProvider"
+    );
+  }
+
+  return context;
+};
