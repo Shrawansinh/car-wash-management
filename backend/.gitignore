@@ -1,2 +1,10 @@
-node_modules
+node_modules/
 .env
+.env.*
+!.env.example
+dist/
+
+token.txt
+
+backend/test.jpg
+backend/testCloudinary.js

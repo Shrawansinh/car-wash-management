@@ -21,5 +21,9 @@ const timeSlotSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+// Give index to date and slot to avoid duplicated slots for the same data and slot 
+timeSlotSchema.index({ date: 1,slot: 1},
+  { unique: true }
+)
 
 export default mongoose.model("TimeSlot", timeSlotSchema);

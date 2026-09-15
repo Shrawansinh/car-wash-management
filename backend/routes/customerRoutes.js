@@ -1,19 +1,49 @@
-import express from 'express';
-
-const router = express.Router();
+import express from "express";
 
 import {
-    createCustomer,
     deleteCustomer,
     getAllCustomers,
     getCustomerById,
-    updateCustomer
+    updateCustomer,
 } from "../controllers/customerController.js";
 
-import { verifyToken } from '../middleware/authMiddleware.js';
-router.get("/",verifyToken,authorizeRoles("admin"),getAllCustomers);;
-router.get("/:id",verifyToken,authorizeRoles("admin"),getCustomerById);
-//router.post("/",createCustomer);
-router.put("/:id",verifyToken,authorizeRoles("admin"),updateCustomer);;
-router.delete("/:id",verifyToken,authorizeRoles("admin"),deleteCustomer);
+import {
+    authorizeRoles,
+    verifyToken,
+} from "../middleware/authMiddleware.js";
+
+const router = express.Router();
+
+// Get all customers - Admin only
+router.get(
+  "/",
+  verifyToken,
+  authorizeRoles("Admin"),
+  getAllCustomers
+);
+
+// Get single customer - Admin only
+router.get(
+  "/:id",
+  verifyToken,
+  authorizeRoles("Admin"),
+  getCustomerById
+);
+
+// Update customer - Admin only
+router.put(
+  "/:id",
+  verifyToken,
+  authorizeRoles("Admin"),
+  updateCustomer
+);
+
+// Delete customer - Admin only
+router.delete(
+  "/:id",
+  verifyToken,
+  authorizeRoles("Admin"),
+  deleteCustomer
+);
+
 export default router;

@@ -4,13 +4,15 @@ import {
     createAdmin,
     getProfile,
     loginAdmin,
+    logoutAdmin,
 } from "../controllers/adminController.js";
-import { authorizeRoles, verifyToken } from "../middleware/authMiddleware.js";
+import { verifyToken } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
-
-router.post("/",verifyToken,authorizeRoles("admin"),createAdmin);
+// first create admin without this tokens ....
+router.post("/",createAdmin);
 router.post("/login", loginAdmin);
+router.post("/logout", verifyToken,logoutAdmin);
 
 // proteted route
 router.get("/profile", verifyToken,getProfile);
