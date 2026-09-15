@@ -98,7 +98,7 @@ const Navbar = () => {
               Login
             </Link>
             <Link
-              to="/book-service"
+              to="/bookService"
               onClick={() => setOpen(false)}
               className="rounded-full bg-[#f1e2c8] px-4 py-2 text-sm font-semibold text-[#0f1115]"
             >

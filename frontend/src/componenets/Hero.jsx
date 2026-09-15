@@ -42,10 +42,10 @@ const Hero = () => {
 
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
-                to="/book-service"
+                to="/bookService"
                 className="rounded-full bg-[#f1e2c8] px-7 py-3.5 font-semibold text-[#0f1115] transition duration-300 hover:bg-[#e7d5b3]"
               >
-                Reserve your visit
+                Book now
               </Link>
 
               <a
